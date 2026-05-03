@@ -1,72 +1,72 @@
 # MindDock
 
-MindDock is a local-first personal knowledge and project workspace. It captures notes, classifies them with AI, links them to projects, turns project context into tasks, and answers questions over the local knowledge base with citations.
+MindDock 是一个本地优先的个人知识库和项目工作台。它用于收集笔记、用 AI 自动分类和总结、关联项目、生成任务，并基于本地知识库进行带引用的问答。
 
-The current app is a Vue 3 + FastAPI prototype with a working local backend, Notion integration hooks, project/task management, local/AI review flows, and an initial RAG path.
+当前版本是一个 Vue 3 + FastAPI 原型，已经具备可运行的本地前后端、Notion 集成入口、项目/任务管理、本地与 AI 复盘流程，以及初步的 RAG 问答能力。
 
-## Current Status
+## 当前完成情况
 
-| Area | Status | Notes |
+| 模块 | 状态 | 说明 |
 | --- | --- | --- |
-| Web app shell | Done | Vue 3, Vite, Pinia, Vue Router, Naive UI layout with Inbox, Ask, Projects, Review, and Settings views. |
-| Note capture | Done | Create notes from the Inbox, classify content, store locally, filter/search by type and text. |
-| Notion sync | Partially done | Supports writing captured notes to Notion and importing pages from a Notion database when credentials are configured. OAuth is not implemented. |
-| Projects | Done | Create, list, inspect, and delete projects. Notes can be associated with projects. |
-| Tasks | Done | Create, update, complete, delete, and auto-generate project tasks from project context. |
-| Knowledge Q&A | Partially done | Uses embeddings/RAG when OpenAI is configured; falls back to local keyword search when embeddings or API keys are unavailable. |
-| Reviews | Partially done | Daily and weekly local summaries are available. AI weekly review requires `OPENAI_API_KEY`. |
-| Settings | Partially done | Stores Notion and model preferences for a single development user. Production auth/multi-user support is not complete. |
-| Supabase | Scaffolded | Initial schema migration exists under `supabase/migrations`, but the app currently runs through SQLAlchemy against `DATABASE_URL`. |
+| Web 应用框架 | 已完成 | Vue 3、Vite、Pinia、Vue Router、Naive UI；包含收集箱、知识问答、项目、复盘、设置页面。 |
+| 笔记收集 | 已完成 | 可在收集箱中新建笔记，自动分类、摘要、打标签，并保存到本地数据库。 |
+| Notion 同步 | 部分完成 | 配置凭证后，可将新笔记写入 Notion，也可从 Notion 数据库导入页面；暂未实现 OAuth。 |
+| 项目管理 | 已完成 | 支持创建、查看、删除项目，并将笔记关联到项目。 |
+| 任务管理 | 已完成 | 支持创建、更新、完成、删除任务，也可基于项目上下文自动生成任务。 |
+| 知识问答 | 部分完成 | 配置 OpenAI 后使用 embedding/RAG；未配置时回退到本地关键词检索。 |
+| 复盘 | 部分完成 | 支持本地每日/每周统计；AI 每周复盘需要配置 `OPENAI_API_KEY`。 |
+| 设置 | 部分完成 | 支持保存单用户开发环境下的 Notion 与模型偏好；生产级认证和多用户隔离尚未完成。 |
+| Supabase | 已脚手架化 | `supabase/migrations` 下有初始 schema，但当前运行时主要通过 SQLAlchemy 和 `DATABASE_URL` 连接数据库。 |
 
-## Features
+## 主要功能
 
-- Capture notes into a local database from the Inbox UI.
-- AI classification for note title, summary, type, tags, and action items.
-- Optional Notion page creation for captured notes.
-- Pull notes from a configured Notion database.
-- Manage projects and project-specific tasks.
-- Generate project assistant insights, next actions, recommended tags, and tasks.
-- Ask questions over notes with citations.
-- Generate daily and weekly review summaries.
-- Configure Notion and model preferences from the Settings UI.
+- 在收集箱中快速保存笔记到本地数据库。
+- 自动生成笔记标题、摘要、类型、标签和行动项。
+- 可选将捕获的笔记同步创建到 Notion。
+- 从配置好的 Notion 数据库同步页面到本地。
+- 管理项目和项目下的任务。
+- 根据项目笔记生成项目洞察、下一步建议、推荐标签和任务。
+- 基于本地笔记进行知识问答，并返回引用来源。
+- 生成每日复盘和每周复盘。
+- 在设置页配置 Notion 和 AI 模型偏好。
 
-## Tech Stack
+## 技术栈
 
-- Frontend: Vue 3, Vite, TypeScript, Pinia, Vue Router, Naive UI, Axios.
-- Backend: FastAPI, SQLAlchemy 2, Pydantic Settings, Uvicorn.
-- AI: OpenAI chat and embeddings; config placeholders for Anthropic, Gemini, and DeepSeek.
-- Integrations: Notion API, Supabase migration scaffold.
-- Databases: MySQL by default if `DATABASE_URL` is omitted; PostgreSQL or SQLite can be used through SQLAlchemy-compatible URLs.
+- 前端：Vue 3、Vite、TypeScript、Pinia、Vue Router、Naive UI、Axios。
+- 后端：FastAPI、SQLAlchemy 2、Pydantic Settings、Uvicorn。
+- AI：OpenAI Chat 和 Embeddings；预留 Anthropic、Gemini、DeepSeek 配置。
+- 集成：Notion API、Supabase migration 脚手架。
+- 数据库：默认使用 MySQL；也可通过 SQLAlchemy 连接 PostgreSQL 或 SQLite。
 
-## Project Structure
+## 目录结构
 
 ```text
 .
-├── backend/                 # FastAPI app, models, services, API routes
-├── frontend/                # Vue 3 web app
-├── supabase/migrations/     # Initial Supabase/Postgres schema draft
-├── start.sh                 # Local start/stop/status helper
-├── .env.example             # Root environment template
+├── backend/                 # FastAPI 应用、模型、服务、API 路由
+├── frontend/                # Vue 3 前端应用
+├── supabase/migrations/     # Supabase/Postgres 初始 schema 草稿
+├── start.sh                 # 本地启动、停止、查看状态脚本
+├── .env.example             # 根目录环境变量示例
 └── README.md
 ```
 
-## Requirements
+## 环境要求
 
-- Node.js and npm
+- Node.js 和 npm
 - Python 3.11+
-- A running database matching `DATABASE_URL`
-- Optional: OpenAI API key for embeddings, RAG answers, classification, and AI reviews
-- Optional: Notion integration token and database ID for Notion sync
+- 一个与 `DATABASE_URL` 匹配的可用数据库
+- 可选：OpenAI API Key，用于 embeddings、RAG 回答、AI 分类和 AI 复盘
+- 可选：Notion integration token 和数据库 ID，用于 Notion 同步
 
-## Configuration
+## 环境变量
 
-Copy the example environment file and edit values for your machine:
+复制环境变量示例：
 
 ```bash
 cp .env.example .env
 ```
 
-Important variables:
+常用配置：
 
 ```bash
 DATABASE_URL=mysql+pymysql://root@localhost:3306/minddock
@@ -78,43 +78,43 @@ DEEPSEEK_API_KEY=your-deepseek-key
 DEEPSEEK_MODEL_NAME=deepseek-chat
 ```
 
-If `DATABASE_URL` is not set, the backend defaults to:
+如果没有设置 `DATABASE_URL`，后端默认使用：
 
 ```bash
 mysql+pymysql://root@localhost:3306/minddock
 ```
 
-For quick local experiments, SQLite also works:
+如果只是快速本地试用，也可以使用 SQLite：
 
 ```bash
 DATABASE_URL=sqlite:///./minddock.db
 ```
 
-## Run Locally
+## 本地运行
 
-Use the helper script from the repository root:
+在仓库根目录执行：
 
 ```bash
 ./start.sh
 ```
 
-It installs missing frontend dependencies, creates `backend/.venv` if needed, installs backend dependencies, and starts both services:
+脚本会安装缺失的前端依赖，创建 `backend/.venv`，安装后端依赖，并启动前后端服务：
 
-- Frontend: http://localhost:5173
-- Backend: http://localhost:8000
-- API docs: http://localhost:8000/docs
-- Health check: http://localhost:8000/api/health
+- 前端：http://localhost:5173
+- 后端：http://localhost:8000
+- API 文档：http://localhost:8000/docs
+- 健康检查：http://localhost:8000/api/health
 
-Stop or inspect services:
+查看状态或停止服务：
 
 ```bash
 ./start.sh status
 ./start.sh stop
 ```
 
-## Manual Development
+## 手动开发
 
-Backend:
+后端：
 
 ```bash
 cd backend
@@ -123,7 +123,7 @@ python3 -m venv .venv
 .venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-Frontend:
+前端：
 
 ```bash
 cd frontend
@@ -131,45 +131,45 @@ npm install
 npm run dev
 ```
 
-Build the frontend:
+构建前端：
 
 ```bash
 cd frontend
 npm run build
 ```
 
-## API Overview
+## API 概览
 
-Backend routes are mounted under `/api/v1`.
+后端 API 统一挂载在 `/api/v1` 下。
 
-- `GET /api/health` checks service health.
-- `GET /api/v1/notes` lists notes.
-- `POST /api/v1/notes/capture` captures and classifies a note.
-- `POST /api/v1/notes/sync/notion` imports notes from Notion.
-- `PATCH /api/v1/notes/{note_id}` updates a note.
-- `DELETE /api/v1/notes/{note_id}` deletes a note.
-- `GET /api/v1/projects` lists projects and tasks.
-- `POST /api/v1/projects` creates a project.
-- `GET /api/v1/projects/{project_id}/assistant` generates project insights.
-- `POST /api/v1/projects/{project_id}/tasks/generate` generates tasks from project context.
-- `POST /api/v1/projects/tasks` creates a task.
-- `PATCH /api/v1/projects/tasks/{task_id}` updates a task.
-- `POST /api/v1/chat/ask` answers questions over notes.
-- `GET /api/v1/review/weekly` generates an AI weekly review.
-- `GET/PATCH /api/v1/settings` reads or updates the development user's settings.
+- `GET /api/health`：服务健康检查。
+- `GET /api/v1/notes`：获取笔记列表。
+- `POST /api/v1/notes/capture`：捕获并分类一条笔记。
+- `POST /api/v1/notes/sync/notion`：从 Notion 导入笔记。
+- `PATCH /api/v1/notes/{note_id}`：更新笔记。
+- `DELETE /api/v1/notes/{note_id}`：删除笔记。
+- `GET /api/v1/projects`：获取项目和任务列表。
+- `POST /api/v1/projects`：创建项目。
+- `GET /api/v1/projects/{project_id}/assistant`：生成项目洞察。
+- `POST /api/v1/projects/{project_id}/tasks/generate`：根据项目上下文生成任务。
+- `POST /api/v1/projects/tasks`：创建任务。
+- `PATCH /api/v1/projects/tasks/{task_id}`：更新任务。
+- `POST /api/v1/chat/ask`：基于笔记进行知识问答。
+- `GET /api/v1/review/weekly`：生成 AI 每周复盘。
+- `GET /api/v1/settings` / `PATCH /api/v1/settings`：读取或更新开发用户设置。
 
-## Data and Security Notes
+## 数据与安全说明
 
-- Do not commit `.env`, local database files, logs, or process files.
-- `service_role` and other secret keys must stay server-side only.
-- The Settings page is currently a single-user development flow, not production authentication.
-- Notion credentials can be stored through the app, but token rotation and OAuth are not implemented yet.
-- Supabase RLS policies should be reviewed before exposing the Supabase schema through public APIs.
+- 不要提交 `.env`、本地数据库文件、日志或进程文件。
+- `service_role` 和其他密钥只能放在服务端，不能暴露到前端。
+- 设置页目前是单用户开发流程，不是生产级认证系统。
+- Notion 凭证可以通过应用保存，但暂未实现 OAuth、令牌轮换和完整权限管理。
+- 如果后续将 Supabase schema 暴露到公开 API，需要先审查并完善 RLS 策略。
 
-## Known Gaps
+## 已知缺口
 
-- No production authentication or multi-user isolation yet.
-- Supabase schema is present, but the running backend currently depends on SQLAlchemy and `DATABASE_URL`.
-- AI features degrade gracefully without API keys, but full RAG answers and weekly reviews require OpenAI configuration.
-- No automated test suite is committed yet.
-- Deployment configuration is not included.
+- 暂无生产级认证和多用户隔离。
+- Supabase schema 已存在，但当前后端运行仍主要依赖 SQLAlchemy 和 `DATABASE_URL`。
+- 未配置 API Key 时，AI 功能会降级；完整 RAG 回答和 AI 每周复盘需要 OpenAI 配置。
+- 还没有提交自动化测试套件。
+- 尚未加入部署配置。
