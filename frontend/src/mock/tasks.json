@@ -1,0 +1,90 @@
+[
+  {
+    "id": "task-1",
+    "title": "Design Notion database structure",
+    "status": "done",
+    "priority": "high",
+    "dueDate": "2025-05-01",
+    "projectId": "proj-1",
+    "sourceNoteId": "note-3",
+    "createdAt": "2025-04-30T09:00:00Z",
+    "updatedAt": "2025-05-01T15:00:00Z"
+  },
+  {
+    "id": "task-2",
+    "title": "Implement Phase 1 frontend demo",
+    "status": "in_progress",
+    "priority": "high",
+    "dueDate": "2025-05-05",
+    "projectId": "proj-1",
+    "sourceNoteId": "note-10",
+    "createdAt": "2025-05-03T18:00:00Z",
+    "updatedAt": "2025-05-03T18:00:00Z"
+  },
+  {
+    "id": "task-3",
+    "title": "Set up Supabase project with pgvector",
+    "status": "todo",
+    "priority": "high",
+    "dueDate": "2025-05-06",
+    "projectId": "proj-1",
+    "sourceNoteId": "note-6",
+    "createdAt": "2025-05-02T08:30:00Z",
+    "updatedAt": "2025-05-02T08:30:00Z"
+  },
+  {
+    "id": "task-4",
+    "title": "Implement DeepSeek provider",
+    "status": "todo",
+    "priority": "medium",
+    "dueDate": "2025-05-07",
+    "projectId": "proj-1",
+    "sourceNoteId": "note-12",
+    "createdAt": "2025-05-03T22:00:00Z",
+    "updatedAt": "2025-05-03T22:00:00Z"
+  },
+  {
+    "id": "task-5",
+    "title": "Update resume with MindDock project",
+    "status": "todo",
+    "priority": "medium",
+    "dueDate": "2025-05-10",
+    "projectId": "proj-2",
+    "sourceNoteId": "note-11",
+    "createdAt": "2025-05-03T20:00:00Z",
+    "updatedAt": "2025-05-03T20:00:00Z"
+  },
+  {
+    "id": "task-6",
+    "title": "Practice system design interviews",
+    "status": "todo",
+    "priority": "medium",
+    "dueDate": "2025-05-15",
+    "projectId": "proj-2",
+    "sourceNoteId": "note-5",
+    "createdAt": "2025-05-01T20:00:00Z",
+    "updatedAt": "2025-05-01T20:00:00Z"
+  },
+  {
+    "id": "task-7",
+    "title": "Finish reading Atomic Habits",
+    "status": "in_progress",
+    "priority": "low",
+    "dueDate": "2025-05-12",
+    "projectId": "proj-3",
+    "sourceNoteId": "note-7",
+    "createdAt": "2025-05-02T21:00:00Z",
+    "updatedAt": "2025-05-02T21:00:00Z"
+  },
+  {
+    "id": "task-8",
+    "title": "Research RAG evaluation methods",
+    "status": "todo",
+    "priority": "medium",
+    "dueDate": "2025-05-08",
+    "projectId": "proj-1",
+    "sourceNoteId": "note-2",
+    "createdAt": "2025-04-29T14:30:00Z",
+    "updatedAt": "2025-04-29T14:30:00Z"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "proj-1",
+    "name": "MindDock - AI Workspace",
+    "goal": "Build a personal AI workspace that connects to Notion, with auto-classification, RAG Q&A, and project management capabilities. Target: portfolio-ready MVP in 2-3 weeks.",
+    "status": "active",
+    "notionProjectPageId": null,
+    "createdAt": "2025-04-28T10:00:00Z",
+    "updatedAt": "2025-05-03T10:00:00Z"
+  },
+  {
+    "id": "proj-2",
+    "name": "Job Search Preparation",
+    "goal": "Prepare for full-stack / AI application developer roles. Complete portfolio, practice system design, and optimize resume.",
+    "status": "active",
+    "notionProjectPageId": null,
+    "createdAt": "2025-05-01T20:00:00Z",
+    "updatedAt": "2025-05-03T20:00:00Z"
+  },
+  {
+    "id": "proj-3",
+    "name": "Reading & Learning",
+    "goal": "Track books, courses, and learning materials. Build consistent reading and learning habits.",
+    "status": "active",
+    "notionProjectPageId": null,
+    "createdAt": "2025-05-02T21:00:00Z",
+    "updatedAt": "2025-05-02T21:00:00Z"
+  }
+]
